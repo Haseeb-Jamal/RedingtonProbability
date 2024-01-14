@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="center">
+    <div class="align">
+      <img src="~/css/image/redington-logo-dark.png" />
+      <br/><br/>
+      <H2 style="align-center">Redington - Probability</H2>
+@{
+    ViewBag.Title = "Probability Calculator";
+}
+
+<h2>Probability Calculator</h2>
+</div>
+
+@using(Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    
+    <p style="margin-bottom:30px">
+        @Html.Label("Probability A:")
+        @Html.TextBox("probabilityA")
+    </p>
+    <p style="margin-bottom:30px">
+        @Html.Label("Probability B:")
+        @Html.TextBox("probabilityB")
+    </p>
+    <p style="margin-bottom:50px">
+        @Html.Label("Select Operation:")
+        @Html.DropDownList("operation", new SelectList(new[] { "CombinedWith", "Either" }))
+    </p>
+    <p>
+        <input type="submit" value="Calculate" />
+    </p>
+}
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <p style="color: red;">@ViewBag.ErrorMessage</p>
+}
+
+@if (ViewBag.Result != null)
+{
+        <p style="color:#0066CC;font-weight: bold">
+        Result: @ViewBag.Result
+    </p>
+}
+</div>
